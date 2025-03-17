@@ -20,13 +20,8 @@ public class BossMap1 : MonoBehaviour
 
     void Update()
     {
-        if (patrolPoints.Length == 0 || isWaiting) return;
-
-        // Nếu đã đến điểm tuần tra, đợi trước khi di chuyển tiếp
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            StartCoroutine(WaitForMoveToPoint());
-        }
+       
+        Patrol();
     }
 
     IEnumerator WaitForMoveToPoint()
@@ -45,8 +40,16 @@ public class BossMap1 : MonoBehaviour
         MoveToRandomWaypoint();
         isWaiting = false;
     }
+    void Patrol()
+    {
+        if (patrolPoints.Length == 0 || isWaiting) return;
 
-    void MoveToRandomWaypoint()
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            StartCoroutine(WaitForMoveToPoint());
+        }
+    }
+        void MoveToRandomWaypoint()
     {
         int randomIndex;
         do

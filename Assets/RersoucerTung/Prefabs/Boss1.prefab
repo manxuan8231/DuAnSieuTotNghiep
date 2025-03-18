@@ -1950,7 +1950,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.127893, y: 0.08290994, z: 16.128115}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8554739032846701778}
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isRage: 0
-  sightRange: 10
+  sightRange: 12
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0

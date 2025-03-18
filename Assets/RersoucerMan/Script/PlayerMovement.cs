@@ -7,16 +7,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;   // Lực nhảy
     [SerializeField] private float sprintSpeed = 8f; // Tốc độ chạy nhanh khi giữ Shift
     [SerializeField] private CharacterController controller; // Đối tượng CharacterController
+    [SerializeField] private float gravity = -9.81f; // Trọng lực
 
-    private Rigidbody rb;
     private Animator animator;
-    private Vector3 movement;
+    private Vector3 velocity;
+    private bool isGrounded;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-       
     }
 
     private void Update()
@@ -25,23 +24,55 @@ public class PlayerMovement : MonoBehaviour
         Jump();
     }
 
-   
     private void MovePlayer()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        isGrounded = controller.isGrounded; // Kiểm tra có chạm đất không
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // Giữ nhân vật không trượt trên mặt đất
+        }
+
         Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * moveSpeed * Time.deltaTime);
-       /* velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);*/
+        float currentSpeed = moveSpeed;
+
+        // Kiểm tra nếu nhấn Shift thì tăng tốc độ chạy
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = sprintSpeed;
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        // Di chuyển nhân vật
+        controller.Move(move * currentSpeed * Time.deltaTime);
+
+        // Animation đi bộ
+        if (move.magnitude >= 0.1f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+        // Trọng lực
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-           /* rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);*/
-            
+            animator.SetTrigger("Jump");
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
     }
 }

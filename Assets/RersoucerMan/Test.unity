@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 274413833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.093, y: -0.381, z: -0}
+  m_LocalPosition: {x: -0.094, y: -0.276, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 1463695359}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6127598, y: -0.36140496, z: 0.6076408, w: 0.35310718}
-  m_LocalPosition: {x: 0.0029990152, y: -0.1560004, z: 0}
+  m_LocalPosition: {x: -0.005, y: 0.386, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -479,7 +479,7 @@ Transform:
   m_GameObject: {fileID: 1636704012}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24178068, y: -0.0066895075, z: 0.0016668896, w: 0.97030646}
-  m_LocalPosition: {x: 3.3089542, y: 1.7575104, z: -8.7651825}
+  m_LocalPosition: {x: 3.3089542, y: 1.7515996, z: -9.412218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6010,7 +6010,7 @@ Animator:
   m_GameObject: {fileID: 8047319039961579290}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0e55d5c42cc96404f872b45455603f8b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bb793e793ab5194a96540871e1bf104, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -9518,7 +9518,7 @@ GameObject:
   - component: {fileID: 7270501583401903520}
   - component: {fileID: 3604619678458593242}
   - component: {fileID: 8047319039961579291}
-  - component: {fileID: 8047319039961579295}
+  - component: {fileID: 8047319039961579296}
   - component: {fileID: 8047319039961579294}
   m_Layer: 0
   m_Name: Player
@@ -9544,7 +9544,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.38325262
   m_Height: 1.9200886
@@ -9563,36 +9563,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 1
   sprintSpeed: 8
-  cameraTransform: {fileID: 1463695361}
---- !u!54 &8047319039961579295
-Rigidbody:
+  controller: {fileID: 8047319039961579296}
+  gravity: -9.81
+--- !u!143 &8047319039961579296
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047319039961579290}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1 &8062749640539768787
 GameObject:
   m_ObjectHideFlags: 0

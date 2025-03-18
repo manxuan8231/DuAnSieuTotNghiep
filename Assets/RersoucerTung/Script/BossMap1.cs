@@ -22,7 +22,7 @@ public class BossMap1 : MonoBehaviour
     public bool isRage = false;
     //State
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange,hearingPlayerSound;
 
     void Start()
     {

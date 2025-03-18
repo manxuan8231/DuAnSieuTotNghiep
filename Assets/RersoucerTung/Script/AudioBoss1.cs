@@ -16,6 +16,10 @@ public class AudioBoss1 : MonoBehaviour
         
         audioSource.PlayOneShot(audioRage);
     }
+    public void EndAudioRage()
+    {
+        audioSource.Stop();
+    }
     public void PlayAudioPatrol()
     {
         audioSource.PlayOneShot(audioPatrol);
@@ -32,6 +36,7 @@ public class AudioBoss1 : MonoBehaviour
     {
         audioSource.Stop();
     }
+    
 }
 
 

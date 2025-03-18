@@ -11,8 +11,10 @@ public class CameraFollowHead : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+   
     private void Start()
     {
+       
         // Ẩn và khóa con trỏ chuột
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -20,8 +22,7 @@ public class CameraFollowHead : MonoBehaviour
 
     private void LateUpdate()
     {
-
-       
+   
         float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 

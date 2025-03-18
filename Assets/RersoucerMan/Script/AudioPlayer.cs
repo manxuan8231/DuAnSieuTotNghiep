@@ -9,9 +9,7 @@ public class AudioPlayer : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-   
-   
+    } 
     public void Walk()
     {
        audioSource.PlayOneShot(walkSound);

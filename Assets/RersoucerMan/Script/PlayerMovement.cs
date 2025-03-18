@@ -4,63 +4,44 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Cài đặt nhân vật")]
     [SerializeField] private float moveSpeed = 5f;   // Tốc độ di chuyển
-    [SerializeField] private float jumpForce = 8f;   // Lực nhảy
-    [SerializeField] private float gravity = 9.81f;  // Trọng lực
-    [SerializeField] private Transform cameraTransform; // Gán Camera vào Inspector
-     private CharacterController controller; // Điều khiển nhân vật
+    [SerializeField] private float jumpForce = 10f;   // Lực nhảy
+    [SerializeField] private float sprintSpeed = 8f; // Tốc độ chạy nhanh khi giữ Shift
+    [SerializeField] private CharacterController controller; // Đối tượng CharacterController
 
-    private Vector3 velocity;
-    private bool isGrounded;
+    private Rigidbody rb;
+    private Animator animator;
+    private Vector3 movement;
 
     private void Start()
-    {   
-     controller = GetComponent<CharacterController>();
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+       
     }
 
     private void Update()
     {
         MovePlayer();
-        ApplyGravity();
+        Jump();
     }
 
+   
     private void MovePlayer()
     {
-        // Lấy input từ bàn phím
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        // Lấy hướng di chuyển theo góc của camera
-        Vector3 moveDirection = cameraTransform.forward * vertical + cameraTransform.right * horizontal;
-        moveDirection.y = 0; // Không di chuyển theo trục Y (tránh bị trượt)
-        moveDirection.Normalize(); // Chuẩn hóa vector
-
-        // Di chuyển nhân vật
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
-
-        // Xoay nhân vật theo hướng di chuyển
-        if (moveDirection.magnitude > 0)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
-
-        // Nhảy
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = jumpForce;
-        }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * moveSpeed * Time.deltaTime);
+       /* velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);*/
     }
 
-    private void ApplyGravity()
+    private void Jump()
     {
-        isGrounded = controller.isGrounded;
-
-        if (isGrounded && velocity.y < 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            velocity.y = -2f; // Đảm bảo nhân vật không bị rơi liên tục
+           /* rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);*/
+            
         }
-
-        velocity.y -= gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }

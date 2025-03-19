@@ -4,63 +4,98 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Cài đặt nhân vật")]
     [SerializeField] private float moveSpeed = 5f;   // Tốc độ di chuyển
-    [SerializeField] private float jumpForce = 8f;   // Lực nhảy
-    [SerializeField] private float gravity = 9.81f;  // Trọng lực
-    [SerializeField] private Transform cameraTransform; // Gán Camera vào Inspector
-     private CharacterController controller; // Điều khiển nhân vật
-
+    [SerializeField] private float jumpForce = 10f;   // Lực nhảy
+    [SerializeField] private float sprintSpeed = 8f; // Tốc độ chạy nhanh khi giữ Shift 
+    [SerializeField] private float gravity = -9.81f; // Trọng lực
     private Vector3 velocity;
-    private bool isGrounded;
 
+    [Header("GetTaoLao")]
+    private Animator animator;
+    public CharacterController controller; // Đối tượng CharacterController
+    public AudioSource audioSource;
+
+    [Header("Ke thua")]
+    SliderUI sliderUI;
     private void Start()
-    {   
-     controller = GetComponent<CharacterController>();
+    {
+        sliderUI = FindAnyObjectByType<SliderUI>();
+        audioSource.enabled = false;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         MovePlayer();
-        ApplyGravity();
+        Jump();
+        SitDown();
     }
 
     private void MovePlayer()
     {
-        // Lấy input từ bàn phím
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        // Lấy hướng di chuyển theo góc của camera
-        Vector3 moveDirection = cameraTransform.forward * vertical + cameraTransform.right * horizontal;
-        moveDirection.y = 0; // Không di chuyển theo trục Y (tránh bị trượt)
-        moveDirection.Normalize(); // Chuẩn hóa vector
+        Vector3 move = transform.right * x + transform.forward * z; // Hướng di chuyển
+        float currentSpeed = moveSpeed; // Tốc độ di chuyển bình thường
+
+        // Kiểm tra nếu nhấn Shift thì tăng tốc độ chạy
+        if (Input.GetKey(KeyCode.LeftShift) && sliderUI.CurrentMana() > 0)
+        {
+
+            sliderUI.runMana = true; // Trừ mana khi chạy
+
+            currentSpeed = sprintSpeed; // Tốc độ chạy nhanh
+            animator.SetBool("isRunning", true);
+            audioSource.enabled = true; // Chạy âm thanh
+        }
+        else
+        {
+
+            sliderUI.runMana = false;
+
+            animator.SetBool("isRunning", false);
+            audioSource.enabled = false;
+        }
 
         // Di chuyển nhân vật
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
-        // Xoay nhân vật theo hướng di chuyển
-        if (moveDirection.magnitude > 0)
+        // Animation đi bộ
+        if (move.magnitude >= 0.1f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
-        // Nhảy
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = jumpForce;
-        }
+        // Trọng lực
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 
-    private void ApplyGravity()
+    private void Jump()
     {
-        isGrounded = controller.isGrounded;
-
-        if (isGrounded && velocity.y < 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            velocity.y = -2f; // Đảm bảo nhân vật không bị rơi liên tục
+            animator.SetTrigger("Jump");
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
-
-        velocity.y -= gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+    }
+    private void SitDown()
+    {
+        if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.SetBool("SitDown", true);
+            controller.height = 1f;
+            controller.center = new Vector3(0, 0.57f, 0);
+        }
+        else
+        {
+            animator.SetBool("SitDown", false);
+            controller.height = 1.86f;
+            controller.center = new Vector3(0, 0.94f, 0);
+        }
     }
 }

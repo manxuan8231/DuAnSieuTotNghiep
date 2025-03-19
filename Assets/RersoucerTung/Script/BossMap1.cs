@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,23 +8,41 @@ public class BossMap1 : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
     private Animator Animator;
+    
+
+
+    public LayerMask whatIsGround, whatIsPlayer;
+
+    //Patrol
     public Transform[] patrolPoints;
     private int currentPatrolPoints = -1;
     private bool isWaiting = false; // Tránh gọi coroutine liên tục
+                                    //atack
+
+    public bool isRage = false;
+    //State
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange,hearingPlayerSound;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        Animator = GetComponent<Animator>();
-        MoveToRandomWaypoint();
+        Animator = GetComponent<Animator>(); 
     }
 
     void Update()
     {
+
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (!playerInSightRange && !playerInAttackRange) Patrol();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange && !isRage) Attack();
        
-        Patrol();
+
     }
 
+    //Patrol
     IEnumerator WaitForMoveToPoint()
     {
         isWaiting = true; // Ngăn gọi lại coroutine nhiều lần
@@ -49,7 +68,7 @@ public class BossMap1 : MonoBehaviour
             StartCoroutine(WaitForMoveToPoint());
         }
     }
-        void MoveToRandomWaypoint()
+    void MoveToRandomWaypoint()
     {
         int randomIndex;
         do
@@ -63,5 +82,31 @@ public class BossMap1 : MonoBehaviour
 
         Animator.SetBool("isPatrol", true);
         Animator.SetBool("isIdle", false);
+        Animator.SetBool("isRun", false);
+    }
+
+
+    //Chase
+
+    void ChasePlayer()
+    {
+        Animator.SetBool("isRun", true);
+        Animator.SetBool("isPatrol", false);
+        Animator.SetBool("isIdle", false);
+        agent.SetDestination(target.position);
+
+       
+    }
+     void Attack()
+    {
+        isRage = true;
+        Animator.SetTrigger("Rage");
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

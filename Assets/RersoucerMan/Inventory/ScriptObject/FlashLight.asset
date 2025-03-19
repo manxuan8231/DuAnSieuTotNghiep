@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Flash
-  value: 0
+  value: 1
   image: {fileID: 21300000, guid: ac92fc50086d6a245b003da545b01ae7, type: 3}
+  type: 0

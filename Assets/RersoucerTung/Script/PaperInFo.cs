@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PaperInFo : MonoBehaviour
 {
 
-    public Image ImagePaper1Info;
+    public RawImage ImagePaper1Info;
     public TextMeshProUGUI TextPaper1Info;
     [SerializeField] private LayerMask paperLayer;
     public TextMeshProUGUI pickUpPaper;
+    public string[] content;
     void Start()
     {
         ImagePaper1Info.gameObject.SetActive(false);
@@ -36,15 +37,29 @@ public class PaperInFo : MonoBehaviour
     }
     IEnumerator WatchPaper1()
     {
+
         ImagePaper1Info.gameObject.SetActive(true);
-        TextPaper1Info.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+       TextPaper1Info.gameObject.SetActive(true);
+        for (int i = 0; i < content.Length; i++)
+        {
+            TextPaper1Info.text = "";
+          
+
+            foreach (var item in content[i])
+            {
+                TextPaper1Info.text += item;
+                yield return new WaitForSeconds(0.05f); // Tốc độ chạy chữ
+            }
+            yield return new WaitForSeconds(1f); // Thời gian ngừng giữa các câu
+        }
+        yield return new WaitForSeconds(3f);
         ImagePaper1Info.gameObject.SetActive(false);
         TextPaper1Info.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
-    {CheckItemPaper();
+    {
+        CheckItemPaper();
 
     }
 }

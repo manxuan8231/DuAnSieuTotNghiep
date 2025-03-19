@@ -21,7 +21,7 @@ public class BossMap1 : MonoBehaviour
 
     public bool isRage = false;
     //State
-    public float sightRange, attackRange;
+    public float sightRange, attackRange,hearRange;
     public bool playerInSightRange, playerInAttackRange,hearingPlayerSound;
 
     void Start()
@@ -32,13 +32,14 @@ public class BossMap1 : MonoBehaviour
 
     void Update()
     {
-
+        hearingPlayerSound =  Physics.CheckSphere(transform.position, hearRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         if (!playerInSightRange && !playerInAttackRange) Patrol();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && !isRage) Attack();
-       
+        if (hearingPlayerSound) HearSoundChanged();
+
 
     }
 
@@ -97,10 +98,18 @@ public class BossMap1 : MonoBehaviour
 
        
     }
+    //attack
      void Attack()
     {
         isRage = true;
         Animator.SetTrigger("Rage");
+    }
+
+    //hearing
+    void HearSoundChanged()
+    {
+        agent.SetDestination(target.position);
+        Animator.SetBool("isRun", true);
     }
     private void OnDrawGizmosSelected()
     {
@@ -108,5 +117,8 @@ public class BossMap1 : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, hearRange);
+
     }
 }

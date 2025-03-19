@@ -12,6 +12,7 @@ public class ItemPickUp : MonoBehaviour
     public void OnMouseDown()
     {
         PickUp();
+        FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
         InventoryManager.instance.DisplayInventory();
     }
 

@@ -2732,7 +2732,7 @@ GameObject:
   - component: {fileID: 1209024305615067784}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2926,6 +2926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashLight: {fileID: 2116054506611683857}
+  audioSource: {fileID: 3541588716653678220}
+  flashLightSound: {fileID: 8300000, guid: 9a0be76fe15884b48a8e9154342d22cf, type: 3}
 --- !u!23 &1381512707743985053
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3757,6 +3759,7 @@ GameObject:
   - component: {fileID: 3541588716653678219}
   - component: {fileID: 685252371839267118}
   - component: {fileID: 1321668016009851536}
+  - component: {fileID: 3541588716653678220}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -4857,6 +4860,103 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!82 &3541588716653678220
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312141197104172605}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &3600152222575950342
 Transform:
   m_ObjectHideFlags: 0
@@ -8022,11 +8122,11 @@ GameObject:
   - component: {fileID: 8738503680325596086}
   - component: {fileID: 7236336009849174706}
   - component: {fileID: 5892600602070897026}
+  - component: {fileID: 8744672319979196737}
   - component: {fileID: 2692366376148721294}
   - component: {fileID: 8533473859556811460}
   - component: {fileID: 4849228125609298313}
   - component: {fileID: 8744672319979196736}
-  - component: {fileID: 8744672319979196737}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8382,6 +8482,7 @@ MonoBehaviour:
   walkSound: {fileID: 8300000, guid: fa5b25ffb4f43084d8b75014bb200938, type: 3}
   runSound: {fileID: 8300000, guid: 3a623781497175342ad422649e3abf5c, type: 3}
   jumpSound: {fileID: 8300000, guid: 2779b308eb643df428d5e88697c4e9a5, type: 3}
+  audioSource2: {fileID: 8533473859556811460}
 --- !u!4 &7261447936916450853
 Transform:
   m_ObjectHideFlags: 0
@@ -9587,7 +9688,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6999595628912573465}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 463f73bdd9b61c448be2b5d662bc4dc2, type: 3}
@@ -9948,7 +10049,7 @@ GameObject:
   - component: {fileID: 7078818445759767942}
   m_Layer: 0
   m_Name: Ground_Mesh
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 73
@@ -9984,8 +10085,8 @@ MonoBehaviour:
   jumpForce: 3
   sprintSpeed: 8
   gravity: -20
+  resetTime: 0
   controller: {fileID: 3490255452051204903}
-  audioSource: {fileID: 8533473859556811460}
 --- !u!1 &8741341996838081705
 GameObject:
   m_ObjectHideFlags: 0

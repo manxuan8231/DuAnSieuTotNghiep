@@ -6,8 +6,13 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip walkSound;
     public AudioClip runSound;
     public AudioClip jumpSound;
+
+    public AudioSource audioSource2;
+
+    private SliderUI sliderUI;
     void Start()
     {
+        sliderUI = FindAnyObjectByType<SliderUI>();
         audioSource = GetComponent<AudioSource>();
     } 
     public void Walk()
@@ -21,5 +26,16 @@ public class AudioPlayer : MonoBehaviour
     public void Jump()
     {
         audioSource.PlayOneShot(jumpSound);
+    }
+    private void Update()
+    {
+        if (sliderUI.CurrentMana() <= 50)
+        {
+            audioSource2.enabled = true;
+        }
+        else
+        {
+            audioSource2.enabled = false;
+        }
     }
 }

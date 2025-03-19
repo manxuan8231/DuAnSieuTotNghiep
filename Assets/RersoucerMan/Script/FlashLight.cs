@@ -1,8 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FlashLight : MonoBehaviour
 {
-    public GameObject flashLight;
+    public GameObject flashLight;//đèn pin
+    public AudioSource audioSource;//âm thanh
+    public AudioClip flashLightSound;//âm thanh khi bật đèn
     void Start()
     {
         flashLight.SetActive(false);
@@ -13,7 +15,8 @@ public class FlashLight : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            flashLight.SetActive(!flashLight.activeSelf);
+            audioSource.PlayOneShot(flashLightSound);
+            flashLight.SetActive(!flashLight.activeSelf);//bật tắt đèn
         }
     }
 }

@@ -7,19 +7,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;   // Lực nhảy
     [SerializeField] private float sprintSpeed = 8f; // Tốc độ chạy nhanh khi giữ Shift 
     [SerializeField] private float gravity = -9.81f; // Trọng lực
+    [SerializeField] private float resetTime = 0f;// Thời gian giữa các lần nhảy
     private Vector3 velocity;
 
     [Header("GetTaoLao")]
     private Animator animator;
     public CharacterController controller; // Đối tượng CharacterController
-    public AudioSource audioSource;
 
     [Header("Ke thua")]
     SliderUI sliderUI;
+
+    
     private void Start()
     {
         sliderUI = FindAnyObjectByType<SliderUI>();
-        audioSource.enabled = false;
+       
         animator = GetComponent<Animator>();
     }
 
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
             currentSpeed = sprintSpeed; // Tốc độ chạy nhanh
             animator.SetBool("isRunning", true);
-            audioSource.enabled = true; // Chạy âm thanh
+            
         }
         else
         {
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             sliderUI.runMana = false;
 
             animator.SetBool("isRunning", false);
-            audioSource.enabled = false;
+           
         }
 
         // Di chuyển nhân vật
@@ -77,10 +79,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= resetTime + 1)
         {
             animator.SetTrigger("Jump");
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            resetTime = Time.time;// Thời gian giữa các lần nhảy
         }
     }
     private void SitDown()
@@ -98,4 +101,6 @@ public class PlayerMovement : MonoBehaviour
             controller.center = new Vector3(0, 0.94f, 0);
         }
     }
+ 
 }
+

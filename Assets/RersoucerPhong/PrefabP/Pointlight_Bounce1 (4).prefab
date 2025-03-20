@@ -111,3 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _light: {fileID: 7530666086540252179}
+  audioSource: {fileID: 0}
+  flashSound: {fileID: 0}

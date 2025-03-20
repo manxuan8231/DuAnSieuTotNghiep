@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
@@ -7,14 +7,23 @@ public class ItemPickUp : MonoBehaviour
     public void PickUp()
     {
         Destroy(gameObject);
-        InventoryManager.instance.AddItem(item);
+        InventoryManager.instance.AddItem(item);// Thêm item vào list items
     }
     public void OnMouseDown()
     {
         PickUp();
-        FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
-        InventoryManager.instance.DisplayInventory();
+        switch (item.type)
+        {
+            case ItemType.flashLight:
+                FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
+                //cộng flashlight
+                break;
+            case ItemType.key:
+                //FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
+                //cộng key
+                break;
+        }      
+        InventoryManager.instance.DisplayInventory();// Hiển thị item
     }
-
 }
 

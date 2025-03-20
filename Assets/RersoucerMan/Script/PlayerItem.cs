@@ -13,18 +13,15 @@ public class PlayerItem : MonoBehaviour
     
     void Update()
     {
-           
+        if (Input.GetKeyDown(KeyCode.Alpha1) && flashLightCount > 0)
+        {          
+            TextFlashLight.text = $"{flashLightCount}";
+            flashLight.SetActive(true);
+        }
     }
     public void AddFlashLight(float amount)
     {
         flashLightCount += amount;
-        TextFlashLight.text = $"{flashLightCount}";
-
-        if (Input.GetKeyDown(KeyCode.Alpha1) && flashLightCount > 0)
-        {
-            flashLightCount -= amount;
-            TextFlashLight.text = $"{flashLightCount}";
-            flashLight.SetActive(true);
-        }
+        TextFlashLight.text = $"{flashLightCount}";      
     }
 }

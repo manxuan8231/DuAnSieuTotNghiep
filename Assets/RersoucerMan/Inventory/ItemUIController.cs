@@ -13,17 +13,17 @@ public class ItemUIController : MonoBehaviour
        /* InventoryManager.Instance.Remove(item);
         Destroy(gameObject);*/
     }
-    /*public void Use()
+    public void Use()
     {
-        switch(item.type)
+        switch (item.type)
         {
-            case ItemType.bottle:
+            case ItemType.flashLight:
                 FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
                 //cộng điểm
                 break;
-            case ItemType.glass:
+            case ItemType.key:
                 //trừ điểm
                 break;
         }
-    }*/
+    }
 }

@@ -45,8 +45,7 @@ public class InventoryManager : MonoBehaviour
 
            // itemName.text = item.itemName;
             itemImage.sprite = item.image;
-
-           
+         
         }
     }
 }

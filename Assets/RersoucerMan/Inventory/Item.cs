@@ -2,8 +2,8 @@
 
 public enum ItemType
 {
-    bottle,//dùng để cộng điểm
-    glass//dùng để trừ điểm
+    flashLight,//dùng để 
+    key//dùng để 
 }
 [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject

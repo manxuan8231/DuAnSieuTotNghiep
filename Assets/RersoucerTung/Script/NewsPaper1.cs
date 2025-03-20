@@ -56,6 +56,7 @@ public class Question1 : MonoBehaviour
         }
         yield return new WaitForSeconds(3f);
         NPCContent.gameObject.SetActive(false);
+
         boxCollider.enabled = false;
        
     }

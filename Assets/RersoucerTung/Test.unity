@@ -3092,8 +3092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c4ea442745f084cb06500793080569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 70
-  sensY: 70
+  sensX: 200
+  sensY: 200
   playerHead: {fileID: 1162994930}
   orientation: {fileID: 1912285873}
   smoothSpeed: 70
@@ -4229,6 +4229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashLight: {fileID: 1811226602}
+  audioSource: {fileID: 0}
+  flashLightSound: {fileID: 0}
 --- !u!95 &1599603220
 Animator:
   serializedVersion: 7
@@ -5713,6 +5715,7 @@ MonoBehaviour:
   walkSound: {fileID: 8300000, guid: fa5b25ffb4f43084d8b75014bb200938, type: 3}
   runSound: {fileID: 8300000, guid: 3a623781497175342ad422649e3abf5c, type: 3}
   jumpSound: {fileID: 8300000, guid: 2779b308eb643df428d5e88697c4e9a5, type: 3}
+  audioSource2: {fileID: 0}
 --- !u!114 &1912285870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5729,8 +5732,8 @@ MonoBehaviour:
   jumpForce: 3
   sprintSpeed: 8
   gravity: -20
+  resetTime: 0
   controller: {fileID: 1912285871}
-  audioSource: {fileID: 1912285866}
 --- !u!143 &1912285871
 CharacterController:
   m_ObjectHideFlags: 0

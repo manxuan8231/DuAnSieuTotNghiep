@@ -22,7 +22,8 @@ public class ItemUIController : MonoBehaviour
                 //cộng điểm
                 break;
             case ItemType.key:
-                //trừ điểm
+                FindAnyObjectByType<PlayerItem>().AddKey1(item.value);
+                //cong diem
                 break;
         }
     }

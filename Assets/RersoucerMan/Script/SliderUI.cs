@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderUI : MonoBehaviour
@@ -9,6 +9,7 @@ public class SliderUI : MonoBehaviour
     private float regenTime = 0;
 
     public bool runMana = false;
+    public bool walkMana = false;
     void Start()
     {
         currentMana = maxMana;
@@ -17,7 +18,7 @@ public class SliderUI : MonoBehaviour
 
     void Update()
     {
-        if(runMana)
+        if(runMana && walkMana)// Trừ mana khi chạy
         {
             currentMana -= 15 * Time.deltaTime;           
             currentMana = Mathf.Clamp(currentMana, 0, maxMana);

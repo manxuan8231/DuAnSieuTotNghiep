@@ -40,10 +40,10 @@ public class InventoryManager : MonoBehaviour
         foreach (Item item in items)// Duyệt qua các item trong list items
         {
            GameObject obj = Instantiate(slotPrefab, toorBar);
-          // var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
+           var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
            var itemImage = obj.transform.Find("ItemImage").GetComponent<Image>();
 
-           // itemName.text = item.itemName;
+            itemName.text = item.itemName;
             itemImage.sprite = item.image;
          
         }

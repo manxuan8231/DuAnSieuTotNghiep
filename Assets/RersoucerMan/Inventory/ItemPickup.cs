@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class ItemPickUp : MonoBehaviour
 {
     public Item item;
-
     public void PickUp()
     {
         Destroy(gameObject);
@@ -19,7 +19,7 @@ public class ItemPickUp : MonoBehaviour
                 //cộng flashlight
                 break;
             case ItemType.key:
-                //FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
+                FindAnyObjectByType<PlayerItem>().AddKey1(item.value);
                 //cộng key
                 break;
         }      

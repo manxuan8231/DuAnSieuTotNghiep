@@ -15,11 +15,11 @@ public class ItemPickUp : MonoBehaviour
         switch (item.type)
         {
             case ItemType.flashLight:
-                FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
+                FindAnyObjectByType<PlayerItem>().IncreaseFlashLightCount(item.value);
                 //cộng flashlight
                 break;
             case ItemType.key:
-                FindAnyObjectByType<PlayerItem>().AddKey1(item.value);
+                FindAnyObjectByType<PlayerItem>().IncreaseKey1Count(item.value);
                 //cộng key
                 break;
         }      

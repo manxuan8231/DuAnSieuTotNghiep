@@ -18,11 +18,11 @@ public class ItemUIController : MonoBehaviour
         switch (item.type)
         {
             case ItemType.flashLight:
-                FindAnyObjectByType<PlayerItem>().AddFlashLight(item.value);
+                FindAnyObjectByType<PlayerItem>().IncreaseFlashLightCount(item.value);
                 //cộng điểm
                 break;
             case ItemType.key:
-                FindAnyObjectByType<PlayerItem>().AddKey1(item.value);
+                FindAnyObjectByType<PlayerItem>().IncreaseKey1Count(item.value);
                 //cong diem
                 break;
         }

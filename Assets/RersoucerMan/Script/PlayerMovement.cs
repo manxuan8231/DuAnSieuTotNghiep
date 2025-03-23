@@ -8,11 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchSpeed = 2f; // Tốc độ chạy khi ngồi
     [SerializeField] private float jumpForce = 10f;   // Lực nhảy  
     [SerializeField] private float gravity = -9.81f; // Trọng lực
-    [SerializeField] private float resetTime = 0f;// Thời gian giữa các lần nhảy
-    private Vector3 velocity;
 
-    [Header("GetTaoLao")]
-    private Animator animator;
+    [SerializeField] private Transform groundCheck; // Kiểm tra đất
+    [SerializeField] private float groundDistance = 0.4f; // Khoảng cách từ nhân vật đến đất
+    [SerializeField] private LayerMask groundMask; // Layer đất
+    
+    private float yVelocity; // tốc độ rơi
+    private Vector3 velocity; // Vận tốc của nhân vật   
+    private Animator animator; 
     public CharacterController controller; // Đối tượng CharacterController
 
     [Header("Ke thua")]
@@ -83,13 +86,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= resetTime + 1)
+        // Kiểm tra nhân vật có đang ở trên mặt đất không
+        bool isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        // Nếu nhân vật đang ở trên mặt đất thì cho phép nhảy
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;// Đặt lại vận tốc rơi
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             animator.SetTrigger("Jump");
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-            resetTime = Time.time;// Thời gian giữa các lần nhảy
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);  
         }
     }
+
     private void SitDown()
     {
         if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftControl))

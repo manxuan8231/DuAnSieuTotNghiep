@@ -10,8 +10,12 @@ public class SliderUI : MonoBehaviour
 
     public bool runMana = false;
     public bool walkMana = false;
+
+    public GameObject canvasSliderMana;
+
     void Start()
     {
+        canvasSliderMana.SetActive(false);
         currentMana = maxMana;
         sliderMana.maxValue = currentMana;
     }
@@ -37,6 +41,15 @@ public class SliderUI : MonoBehaviour
             {
                 regenTime += Time.deltaTime;
             }
+        }
+        //mana be hon 100 thi hien thanh mana
+        if(currentMana < 100)
+        {
+            canvasSliderMana.SetActive(true);
+        }
+        else
+        {
+            canvasSliderMana.SetActive(false);
         }
     }
     public float CurrentMana()

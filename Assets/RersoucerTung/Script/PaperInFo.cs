@@ -27,7 +27,8 @@ public class PaperInFo : MonoBehaviour
             pickUpPaper.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
+                UIEvenNhatKyBao get = FindAnyObjectByType<UIEvenNhatKyBao>();
+                get.GetBao(1);
                 pickUpPaper.gameObject.SetActive(false);
                 StartCoroutine(WatchPaper1());
                 Destroy(hit.collider.gameObject);

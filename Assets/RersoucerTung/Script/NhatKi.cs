@@ -33,7 +33,8 @@ public class NhatKi : MonoBehaviour
             pickUpNhatKi.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) )
             {
-
+                UIEvenNhatKyBao get = FindAnyObjectByType<UIEvenNhatKyBao>();
+                get.GetNhatKy(1);
                 pickUpNhatKi.gameObject.SetActive(false);
                 StartCoroutine(WatchNhatKiContent1());
                 Destroy(hit.collider.gameObject);

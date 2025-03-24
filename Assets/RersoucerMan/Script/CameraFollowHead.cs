@@ -29,7 +29,7 @@ public class CameraFollowHead : MonoBehaviour
         // Xoay góc nhìn theo chuột
         yRotation += mouseX;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Giới hạn góc nhìn lên/xuống
+        xRotation = Mathf.Clamp(xRotation, -65f, 65f); // Giới hạn góc nhìn lên/xuống
 
         // góc quay cho camera và nhân vật
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);// Xoay camera

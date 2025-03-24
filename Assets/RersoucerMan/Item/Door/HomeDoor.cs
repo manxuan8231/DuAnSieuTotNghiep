@@ -29,8 +29,9 @@ public class HomeDoor : MonoBehaviour
             audioSource.PlayOneShot(openDoorSound);// Phat am thanh
             animator.SetBool("isOpen", true);// Mo cua
             playerItem.IncreaseKey1Count(-1);// Giam so luong key
-            ItemUIController item = FindAnyObjectByType<ItemUIController>();
-            item.Remove();// Xoa key khoi UI
+            ItemUIController itemUI = FindAnyObjectByType<ItemUIController>();
+            itemUI.Remove();// Xoa key khoi UI
+           
         }     
     }
    

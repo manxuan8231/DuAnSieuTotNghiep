@@ -10,8 +10,8 @@ public class ItemUIController : MonoBehaviour
     }
     public void Remove()
     {
-        InventoryManager.instance.Remove(item);
-        Destroy(gameObject);
+        InventoryManager.instance.Remove(this.item);
+        Destroy(this.gameObject);
 
     }
     public void Use()

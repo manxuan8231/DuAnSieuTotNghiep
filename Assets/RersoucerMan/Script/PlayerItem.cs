@@ -38,10 +38,10 @@ public class PlayerItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && keyCount1 > 0)
         {
             ToggleItem(key1);
-        }else if(keyCount1 <= 0) 
+        }
+        else if(keyCount1 <= 0) 
         {
            key1.SetActive(false);
-
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && keyCount2 > 0)
@@ -66,16 +66,12 @@ public class PlayerItem : MonoBehaviour
     // Ham tang so luong item
     public void IncreaseFlashLightCount(int amount)
     {
-        flashLightCount = Mathf.Max(0, flashLightCount + amount);
+        flashLightCount = Mathf.Max(0, flashLightCount + amount); 
     }
 
     public void IncreaseKey1Count(int amount)
     {
         keyCount1 = Mathf.Max(0, keyCount1 + amount);
-    }
-    public void TruKey1Count(int amount)
-    {
-        keyCount1 = Mathf.Max(0, keyCount1 - amount);
     }
     public void IncreaseKey2Count(int amount)
     {

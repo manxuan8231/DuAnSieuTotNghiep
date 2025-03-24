@@ -13,6 +13,7 @@ public class NhatKi : MonoBehaviour
     public TextMeshProUGUI nhatKiText;
     public AudioSource audioSource;
     public TextMeshProUGUI pickUpNhatKi;
+    public AudioClip nextText;
     public string[] content;
     [SerializeField] private LayerMask nhatKiLayer;
 
@@ -53,7 +54,9 @@ public class NhatKi : MonoBehaviour
                 nhatKiText.text += item;
                 yield return new WaitForSeconds(0.05f); // Tốc độ chạy chữ
             }
+            
             yield return new WaitForSeconds(5); // Thời gian ngừng giữa các câu
+            audioSource.PlayOneShot(nextText);
 
         }
         yield return new WaitForSeconds(3);
@@ -61,7 +64,7 @@ public class NhatKi : MonoBehaviour
         nhatKiText.gameObject.SetActive(false);
        
     }
-   
+  
     private void Update()
     {
         checkNhatKi();

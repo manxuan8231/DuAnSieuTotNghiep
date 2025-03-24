@@ -16,8 +16,8 @@ public class CameraFollowHead : MonoBehaviour
     {
        
         // Ẩn và khóa con trỏ chuột
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;// Khóa con trỏ chuột
+        Cursor.visible = false;// Ẩn con trỏ chuột
     }
 
     private void LateUpdate()
@@ -32,10 +32,10 @@ public class CameraFollowHead : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Giới hạn góc nhìn lên/xuống
 
         // góc quay cho camera và nhân vật
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);// Xoay camera
         if (orientation != null)
         {
-            orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);
+            orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);// Xoay hướng nhân vật
         }
 
         // Di chuyển camera 

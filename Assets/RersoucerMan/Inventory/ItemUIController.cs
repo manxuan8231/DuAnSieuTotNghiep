@@ -10,8 +10,9 @@ public class ItemUIController : MonoBehaviour
     }
     public void Remove()
     {
-       /* InventoryManager.Instance.Remove(item);
-        Destroy(gameObject);*/
+        InventoryManager.instance.Remove(item);
+        Destroy(gameObject);
+
     }
     public void Use()
     {
@@ -19,11 +20,10 @@ public class ItemUIController : MonoBehaviour
         {
             case ItemType.flashLight:
                 FindAnyObjectByType<PlayerItem>().IncreaseFlashLightCount(item.value);
-                //cộng điểm
+                
                 break;
             case ItemType.key:
-                FindAnyObjectByType<PlayerItem>().IncreaseKey1Count(item.value);
-                //cong diem
+                FindAnyObjectByType<PlayerItem>().IncreaseFlashLightCount(item.value);              
                 break;
         }
     }

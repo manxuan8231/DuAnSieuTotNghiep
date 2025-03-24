@@ -4,7 +4,6 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerItem : MonoBehaviour
 {
-    public Transform position;// Vi tri item
     // Den pin
     public GameObject flashLight;
     private int flashLightCount = 0;
@@ -19,8 +18,6 @@ public class PlayerItem : MonoBehaviour
     // RigBuilder
     public RigBuilder rigBuilder;
 
-   
-
     void Start()
     {
         // Tat cac item luc dau
@@ -34,37 +31,59 @@ public class PlayerItem : MonoBehaviour
         // Kiem tra input va chuyen doi trang thai item
         if (Input.GetKeyDown(KeyCode.Alpha1) && flashLightCount > 0)
         {
-         IncreaseItem(flashLight);
+            ToggleItem(flashLight);
         }
+        
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && keyCount1 > 0)
         {
-          IncreaseItem(key1);
+            ToggleItem(key1);
+        }else if(keyCount1 <= 0) 
+        {
+           key1.SetActive(false);
+
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && keyCount2 > 0)
         {
-         
+            ToggleItem(key2);
         }
+       
     }
-    public void IncreaseItem(GameObject item)
+    // Ham chuyen doi trang thai item va RigBuilder
+    private void ToggleItem(GameObject item)
     {
-        item.SetActive(!flashLight.activeSelf); // Kich hoat item
-        rigBuilder.enabled = !rigBuilder.enabled;// Kich hoat rigBuilder
+        bool isActive = !item.activeSelf;
+        item.SetActive(isActive);
+        rigBuilder.enabled = isActive;
+
+        // Tat cac item khac de dam bao chi 1 item duoc kich hoat
+        if (item != flashLight) flashLight.SetActive(false);
+        if (item != key1) key1.SetActive(false);
+        if (item != key2) key2.SetActive(false);
     }
+
     // Ham tang so luong item
     public void IncreaseFlashLightCount(int amount)
     {
-        flashLightCount += amount;
+        flashLightCount = Mathf.Max(0, flashLightCount + amount);
     }
 
     public void IncreaseKey1Count(int amount)
     {
-        keyCount1 += amount;
+        keyCount1 = Mathf.Max(0, keyCount1 + amount);
     }
-
+    public void TruKey1Count(int amount)
+    {
+        keyCount1 = Mathf.Max(0, keyCount1 - amount);
+    }
     public void IncreaseKey2Count(int amount)
     {
-        keyCount2 += amount;
+        keyCount2 = Mathf.Max(0, keyCount2 + amount);
+    }
+
+    public int KeyCount1()
+    {
+        return keyCount1;
     }
 }

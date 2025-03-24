@@ -31,11 +31,16 @@ public class InventoryManager : MonoBehaviour
         items.Add(item);// Thêm item vào list items
         DisplayInventory();// Hiển thị item
     }
+    public void Remove(Item item)
+    {
+        items.Remove(item);// Xóa item khỏi list items
+        DisplayInventory();// Hiển thị item
+    }
     public void DisplayInventory()
     {
         foreach (Transform child in toorBar)// Duyệt qua các item trong toolbar
         {
-            Destroy(child.gameObject);
+            Destroy(child.gameObject);// Xóa item
         }
         foreach (Item item in items)// Duyệt qua các item trong list items
         {
@@ -46,6 +51,7 @@ public class InventoryManager : MonoBehaviour
             itemName.text = item.itemName;
             itemImage.sprite = item.image;
          
+            obj.GetComponent<ItemUIController>().SetItem(item);  
         }
     }
 }

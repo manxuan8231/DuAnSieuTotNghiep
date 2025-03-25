@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class UIEvenNhatKyBao : MonoBehaviour
@@ -30,7 +31,12 @@ public class UIEvenNhatKyBao : MonoBehaviour
             tichBao .SetActive (true);
             textBao.text = $"Tờ Báo: {countBao}/1";
         }
+       
     }
+
+   
+
+
     public void GetNhatKy(float amount)
     {
         countNhatKy += amount;

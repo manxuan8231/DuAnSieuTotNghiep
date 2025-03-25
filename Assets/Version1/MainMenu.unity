@@ -814,7 +814,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75446836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1084821412}
+        m_TargetAssemblyTypeName: SceneChangeEven1, Assembly-CSharp
+        m_MethodName: ChangeCutSceneOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &75446836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6457,6 +6469,7 @@ GameObject:
   - component: {fileID: 1084821411}
   - component: {fileID: 1084821410}
   - component: {fileID: 1084821409}
+  - component: {fileID: 1084821412}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -6525,6 +6538,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084821412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084821408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ff19dd46d051d438bcb318777ce49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 1
 --- !u!1001 &1098658770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12397,7 +12423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME NAME
+  m_text: Version1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db479847020e54241aee2d60c329f8c6, type: 2}
   m_sharedMaterial: {fileID: 7673085954737570223, guid: db479847020e54241aee2d60c329f8c6, type: 2}

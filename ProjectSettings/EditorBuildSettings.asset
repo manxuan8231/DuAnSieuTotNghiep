@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Version1/MainMenu.unity
     guid: d87e3600c66613c4f9179b22ccc9b562
   - enabled: 1
-    path: Assets/Scenes/Cut_Scene_1.unity
+    path: Assets/Version1/Cut_Scene_1.unity
     guid: 0f7bad55b22200c46a4647e871455c3d
+  - enabled: 1
+    path: Assets/Version1/Even1.unity
+    guid: b5f173e739a2eec44a216f90d179cb60
+  - enabled: 1
+    path: Assets/RersoucerThien/CutsceneBoss.unity
+    guid: 613667fa9ecea3d45994c08c05feb506
+  - enabled: 1
+    path: Assets/Version1/Even2.unity
+    guid: 3aa15eb62f7dc864280f07c82cbd0eed
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}

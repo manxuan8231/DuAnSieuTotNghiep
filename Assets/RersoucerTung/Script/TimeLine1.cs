@@ -18,6 +18,6 @@ public class TimeLine1 : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(30);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

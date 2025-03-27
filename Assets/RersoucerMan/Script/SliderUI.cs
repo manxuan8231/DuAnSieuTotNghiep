@@ -13,11 +13,14 @@ public class SliderUI : MonoBehaviour
 
     public GameObject canvasSliderMana;
 
+   
     void Start()
     {
         canvasSliderMana.SetActive(false);
         currentMana = maxMana;
         sliderMana.maxValue = currentMana;
+
+      
     }
 
     void Update()

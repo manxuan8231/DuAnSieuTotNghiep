@@ -20,7 +20,9 @@ public class OpenCuatren : MonoBehaviour
         
     }
     public void OnMouseDown()// Khi click chuot vao cua
+        
     {
+        
         if (playerItem.KeyCount1() > 0)
         {
             Debug.Log("Open Door");

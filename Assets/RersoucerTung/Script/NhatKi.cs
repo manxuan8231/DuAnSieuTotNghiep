@@ -40,8 +40,10 @@ public class NhatKi : MonoBehaviour
                 Destroy(hit.collider.gameObject);
             }
           
-        }
+        } 
     }
+
+
     IEnumerator pauseGame()
     {
         Time.timeScale = 0; // Dừng game

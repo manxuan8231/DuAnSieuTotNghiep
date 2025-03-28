@@ -15,6 +15,8 @@ public class ContentRadioQuest1 : MonoBehaviour
         radio = GameObject.FindAnyObjectByType<Radio>();
     }
 
+
+
     void CheckItemPaper()
     {
         if (Physics.Raycast(transform.position, transform.forward, out var hit, 5, radioLayer))

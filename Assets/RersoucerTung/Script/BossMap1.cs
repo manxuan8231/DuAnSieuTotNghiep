@@ -11,6 +11,8 @@ public class BossMap1 : MonoBehaviour
     
 
 
+
+     
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patrol

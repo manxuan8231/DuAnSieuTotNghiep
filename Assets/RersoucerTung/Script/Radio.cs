@@ -1,68 +1,91 @@
-using System.Collections;
-using Unity.VisualScripting;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip sosMors, sosMorse2, sosMorse3;
-    public bool morse1, morse2, morse3 = false;
+    public AudioClip sosMors;
+    public bool morse1;
+    private BoxCollider boxCollider;
+    private bool playerInside = false;
+    public TextMeshProUGUI textMorse1;
+    public string[] content1;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
+        textMorse1.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-    IEnumerator SosMorse()
-    {
-        
-        yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(sosMors);
-        morse1 = true;
-    }
-    IEnumerator SosMorse2()
-    {
-       
-        yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(sosMorse2);
-        morse2 = true;
-    }
-    IEnumerator SosMorse3()
-    {
-       
-        yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(sosMorse3);
-        morse3 = true;
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.gameObject.tag == "Player")
+        if (playerInside && !audioSource.isPlaying) 
         {
-            if(!morse1)
-            {
-                StartCoroutine(SosMorse());
-            }
-            if (morse1 && !morse2)
-            {
-                StartCoroutine(SosMorse2());
-            }
-            if (morse1 && morse2 && !morse3)
-            {
-                StartCoroutine(SosMorse3());
-            }
+            PlayMorse();
         }
     }
+
+    public void OnBox()
+    {
+        boxCollider.enabled = true;
+    }
+
+    void PlayMorse()
+    {
+        if (!morse1)
+        {
+            StartCoroutine(SosMorse());
+            
+        }
+       
+    }
+
+    IEnumerator SosMorse()
+    {
+        audioSource.clip = sosMors;
+        audioSource.loop = true;
+        audioSource.Play();
+        yield return new WaitForSeconds(5f);
+        morse1 = true;
+        StartCoroutine(textMorse1Routie());
+    }
+
+  
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInside = true;
+            PlayMorse();
+        }
+    }
+
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
+            playerInside = false;
             audioSource.Stop();
+            textMorse1.gameObject.SetActive(false);
+        }
+    }
+    IEnumerator textMorse1Routie()
+    {
+        textMorse1.gameObject.SetActive(true);
+        for (int i = 0; i < content1.Length; i++)
+        {
+            textMorse1.text = "";
+
+            foreach (var item in content1[i])
+            {
+                textMorse1.text += item;
+                yield return new WaitForSecondsRealtime(0.1f); // Dùng WaitForSecondsRealtime để chạy dù Time.timeScale = 0
+            }
+            yield return new WaitForSecondsRealtime(3f); // Tạm dừng giữa các câu
         }
     }
 }
+

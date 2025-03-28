@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class ContentRadioQuest1 : MonoBehaviour
 {
     public RawImage image;
-    public TextMeshProUGUI TextMeshProUGUI;
-    public string[] content;
     [SerializeField] private LayerMask radioLayer;
+    Radio radio;
     void Start()
     {
         image.gameObject.SetActive(false);
-        TextMeshProUGUI.gameObject.SetActive(false);
+       
+        radio = GameObject.FindAnyObjectByType<Radio>();
     }
 
     void CheckItemPaper()
@@ -40,28 +40,13 @@ public class ContentRadioQuest1 : MonoBehaviour
     }
     IEnumerator WatchRadioText1()
     {
-        TextMeshProUGUI.gameObject.SetActive(true);
+      
         image.gameObject.SetActive(true);
-
-        for (int i = 0; i < content.Length; i++)
-        {
-            TextMeshProUGUI.text = "";
-
-            foreach (var item in content[i])
-            {
-                TextMeshProUGUI.text += item;
-                yield return new WaitForSecondsRealtime(0.05f); // Dùng WaitForSecondsRealtime để chạy dù Time.timeScale = 0
-            }
-            yield return new WaitForSecondsRealtime(3f); // Tạm dừng giữa các câu
-        }
-
-        yield return new WaitForSecondsRealtime(3f);
-
-        TextMeshProUGUI.gameObject.SetActive(false);
+        yield return new WaitForSecondsRealtime(5f);
         image.gameObject.SetActive(false);
-
-        Time.timeScale = 1; // Tiếp tục game
        
+        Time.timeScale = 1; // Tiếp tục game
+        radio.OnBox();
     }
 
     // Update is called once per frame

@@ -20,21 +20,24 @@ public class Radio : MonoBehaviour
     }
     IEnumerator SosMorse()
     {
-        morse1 = true;
+        
         yield return new WaitForSeconds(0.5f);
         audioSource.PlayOneShot(sosMors);
+        morse1 = true;
     }
     IEnumerator SosMorse2()
     {
-        morse1 = true;
+       
         yield return new WaitForSeconds(0.5f);
         audioSource.PlayOneShot(sosMorse2);
+        morse2 = true;
     }
     IEnumerator SosMorse3()
     {
-        morse1 = true;
+       
         yield return new WaitForSeconds(0.5f);
         audioSource.PlayOneShot(sosMorse3);
+        morse3 = true;
     }
     public void OnTriggerEnter(Collider other)
     {

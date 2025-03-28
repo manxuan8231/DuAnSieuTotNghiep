@@ -36,11 +36,17 @@ public class NhatKi : MonoBehaviour
                 UIEvenNhatKyBao get = FindAnyObjectByType<UIEvenNhatKyBao>();
                 get.GetNhatKy(1);
                 pickUpNhatKi.gameObject.SetActive(false);
-                StartCoroutine(WatchNhatKiContent1());
+                StartCoroutine(pauseGame());
                 Destroy(hit.collider.gameObject);
             }
           
         }
+    }
+    IEnumerator pauseGame()
+    {
+        Time.timeScale = 0; // Dừng game
+        StartCoroutine(WatchNhatKiContent1());
+        yield return new WaitForSecondsRealtime(0.1f); // Chạy đúng ngay cả khi Time.timeScale = 0
     }
     IEnumerator WatchNhatKiContent1()
     {
@@ -53,14 +59,14 @@ public class NhatKi : MonoBehaviour
             foreach (var item in content[i])
             {
                 nhatKiText.text += item;
-                yield return new WaitForSeconds(0.05f); // Tốc độ chạy chữ
+                yield return new WaitForSecondsRealtime(0.05f); // Tốc độ chạy chữ
             }
             
-            yield return new WaitForSeconds(5); // Thời gian ngừng giữa các câu
+            yield return new WaitForSecondsRealtime(5); // Thời gian ngừng giữa các câu
             audioSource.PlayOneShot(nextText);
 
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         nhatKiImage.gameObject.SetActive(false);
         nhatKiText.gameObject.SetActive(false);
        

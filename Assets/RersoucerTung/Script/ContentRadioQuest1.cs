@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+//code nay them vao cinemachine
 public class ContentRadioQuest1 : MonoBehaviour
 {
     public RawImage image;
@@ -26,7 +26,7 @@ public class ContentRadioQuest1 : MonoBehaviour
             {
                 
                 StartCoroutine(pauseGame());
-               
+                
 
             }
         }

@@ -30,11 +30,17 @@ public class PaperInFo : MonoBehaviour
                 UIEvenNhatKyBao get = FindAnyObjectByType<UIEvenNhatKyBao>();
                 get.GetBao(1);
                 pickUpPaper.gameObject.SetActive(false);
-                StartCoroutine(WatchPaper1());
+                StartCoroutine(pauseGame());
                 Destroy(hit.collider.gameObject);
             }
         }
        
+    }
+    IEnumerator pauseGame()
+    {
+        Time.timeScale = 0; // Dừng game
+        StartCoroutine(WatchPaper1());
+        yield return new WaitForSecondsRealtime(0.1f); // Chạy đúng ngay cả khi Time.timeScale = 0
     }
     IEnumerator WatchPaper1()
     {
@@ -49,13 +55,15 @@ public class PaperInFo : MonoBehaviour
             foreach (var item in content[i])
             {
                 TextPaper1Info.text += item;
-                yield return new WaitForSeconds(0.05f); // Tốc độ chạy chữ
+                yield return new WaitForSecondsRealtime(0.05f); // Tốc độ chạy chữ
             }
-            yield return new WaitForSeconds(1f); // Thời gian ngừng giữa các câu
+            yield return new WaitForSecondsRealtime(1f); // Thời gian ngừng giữa các câu
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         ImagePaper1Info.gameObject.SetActive(false);
         TextPaper1Info.gameObject.SetActive(false);
+
+        Time.timeScale = 1; // Tiếp tục game
     }
     // Update is called once per frame
     void Update()

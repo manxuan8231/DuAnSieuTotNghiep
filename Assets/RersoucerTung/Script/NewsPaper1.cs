@@ -29,6 +29,7 @@ public class Question1 : MonoBehaviour
             
         }
     }
+  
     IEnumerator CameraPaper1()
     {
         cineMachinePaPer1.Priority = 20;

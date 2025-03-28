@@ -132,6 +132,7 @@ MonoBehaviour:
   - "\u0110\xE2y h\xECnh nh\u01B0 l\xE0 m\xE3 morse m\xE0?"
   - " ...    ---     ... C\xE1i n\xE0y l\xE0 SOS m\xE0?"
   - "L\xE0 ai \u0111\xE3 g\u1EEDi n\xF3 v\u1EADy??"
+  - "L\xE0 ai \u0111\xE3 g\u1EEDi n\xF3 v\u1EADy??"
 --- !u!65 &7333761560360344589
 BoxCollider:
   m_ObjectHideFlags: 0

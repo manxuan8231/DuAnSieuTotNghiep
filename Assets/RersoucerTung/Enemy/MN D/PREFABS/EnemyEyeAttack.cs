@@ -13,8 +13,11 @@ public class EnemyEyeAttack : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip jumpScare;
+
+    public Light lightning;
     private void Start()
     {
+        lightning.enabled = false;
         audioSource = GetComponent<AudioSource>();
        animator = GetComponent<Animator>();
     }
@@ -22,7 +25,8 @@ public class EnemyEyeAttack : MonoBehaviour
     {
         if (other.CompareTag("Player")) // Kiểm tra va chạm với player
         {
-           targetCamera.Priority = 100;
+            lightning.enabled=true;
+            targetCamera.Priority = 100;
             animator.SetTrigger("Attack");
             audioSource.PlayOneShot(jumpScare);
             PlayerLives playerLives = FindAnyObjectByType<PlayerLives>();

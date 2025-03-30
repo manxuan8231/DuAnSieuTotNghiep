@@ -55,7 +55,7 @@ public class Radio : MonoBehaviour
         yield return new WaitForSeconds(2f);    
         morse1 = true;
         StartCoroutine(textMorse1Routie());
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(18f);
         audioSource.Stop();
         StopCoroutine(textMorse1Routie());
         textMorse1.gameObject.SetActive(false);

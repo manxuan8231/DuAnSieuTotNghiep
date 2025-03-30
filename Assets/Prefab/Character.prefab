@@ -804,7 +804,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 0
     Time: 2
     CustomCurve:
       serializedVersion: 2
@@ -2251,7 +2251,7 @@ GameObject:
   - component: {fileID: 6477925686138720217}
   - component: {fileID: 3984674081723143811}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,7 +2265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3189118191812457427}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9994558, z: -0, w: 0.032988314}
+  m_LocalRotation: {x: 0, y: 0.9994557, z: 0, w: 0.03298958}
   m_LocalPosition: {x: 5.14594, y: 0, z: -5.9268456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5441,6 +5441,7 @@ GameObject:
   - component: {fileID: 2915656167642844086}
   - component: {fileID: 4862490902624089514}
   - component: {fileID: 3068810992203289156}
+  - component: {fileID: 2598338275949248246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5911,6 +5912,18 @@ MonoBehaviour:
   panelRespawn: {fileID: 7488375730424679776}
   scene: 5
   characterController: {fileID: 9020101741030780825}
+--- !u!114 &2598338275949248246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863531127381453170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff985a79153a94d4c9b38ab373fdfec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7888029535662408183
 GameObject:
   m_ObjectHideFlags: 0
@@ -6202,7 +6215,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1475713732777428055}
-  - {fileID: 2558972591188943557}
+  - {fileID: 2082277296993079580}
   - {fileID: 1706855872302357266}
   m_Father: {fileID: 4995492640460254549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7209,7 +7222,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04f1ad56058029498289328ce15c812, type: 3}
---- !u!224 &2558972591188943557 stripped
+--- !u!224 &2082277296993079580 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4568602927356523480, guid: d04f1ad56058029498289328ce15c812, type: 3}
   m_PrefabInstance: {fileID: 2558972591188943556}

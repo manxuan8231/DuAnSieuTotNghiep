@@ -10,7 +10,7 @@ public class CameraFollowHead : MonoBehaviour
 
     private float xRotation = 0f;
     private float yRotation = 0f;
-
+    public bool rotation = true;
    
     private void Start()
     {
@@ -22,23 +22,24 @@ public class CameraFollowHead : MonoBehaviour
 
     private void LateUpdate()
     {
-   
-        float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
-
-        // Xoay góc nhìn theo chuột
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -65f, 65f); // Giới hạn góc nhìn lên/xuống
-
-        // góc quay cho camera và nhân vật
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);// Xoay camera
-        if (orientation != null)
+        if (rotation)
         {
-            orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);// Xoay hướng nhân vật
-        }
+            float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 
-        // Di chuyển camera 
+            // Xoay góc nhìn theo chuột
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -65f, 65f); // Giới hạn góc nhìn lên/xuống
+
+            // góc quay cho camera và nhân vật
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);// Xoay camera
+            if (orientation != null)
+            {
+                orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);// Xoay hướng nhân vật
+            }
+        }
+        // camera follow
         transform.position = Vector3.Lerp(transform.position, playerHead.position, smoothSpeed * Time.deltaTime);
     }
 }

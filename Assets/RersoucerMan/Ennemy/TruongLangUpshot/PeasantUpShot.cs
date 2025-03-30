@@ -5,17 +5,14 @@ public class PeasantUpShot : MonoBehaviour
     public Transform enemy; // Gán enemy vào Inspector
     private Animator animator;
     private int countAttack = 1;
+    private AudioSource audiosource;
+    public AudioClip audioClip;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        audiosource = GetComponent<AudioSource>();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-           
-        }
-    }
+   
     public void OnMouseEnter()
     {
         if (countAttack > 0)
@@ -25,5 +22,9 @@ public class PeasantUpShot : MonoBehaviour
             playerUpshot.PlayerUpShot(enemy.transform);
             countAttack -= 1;
         }
+    }
+    public void AudioAttack()
+    {
+       audiosource.PlayOneShot(audioClip);
     }
 }

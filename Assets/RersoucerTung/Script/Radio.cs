@@ -11,12 +11,15 @@ public class Radio : MonoBehaviour
     private bool playerInside = false;
     public TextMeshProUGUI textMorse1;
     public string[] content1;
+    public GameObject model;
+    public AudioClip scaredSound;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.enabled = false;
         textMorse1.gameObject.SetActive(false);
+        model.SetActive(false);
     }
 
     void Update()
@@ -49,9 +52,16 @@ public class Radio : MonoBehaviour
         audioSource.clip = sosMors;
         audioSource.loop = true;
         audioSource.Play();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);    
         morse1 = true;
         StartCoroutine(textMorse1Routie());
+        yield return new WaitForSeconds(15f);
+        audioSource.Stop();
+        StopCoroutine(textMorse1Routie());
+        textMorse1.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        audioSource.PlayOneShot(scaredSound);
+        model.SetActive(true);
     }
 
   

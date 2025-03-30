@@ -9,7 +9,7 @@ public class PictureQuest : MonoBehaviour
     public TextMeshProUGUI textContent;
     public CinemachineCamera cameraPlayer;
     public CinemachineCamera cameraPicture;
-
+    public GameObject picture;
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class PictureQuest : MonoBehaviour
            if(Input.GetKeyDown(KeyCode.E))
             {
                StartCoroutine(ChangeCamera());
+               
             }
         }
 
@@ -36,19 +37,30 @@ public class PictureQuest : MonoBehaviour
   
     IEnumerator ChangeCamera()
     {
+    
+     
+        //Time.timeScale = 0; // Dừng game
         cameraPicture.Priority = 20;
         cameraPlayer.Priority = 0;
         yield return new WaitForSecondsRealtime(1f);
         textContent.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(3f);
-        textContent.gameObject.SetActive(false);
         cameraPicture.Priority = 0;
         cameraPlayer.Priority = 10;
-      
+        yield return new WaitForSecondsRealtime(2f);
+        textContent.gameObject.SetActive(false);
+        Destroy(picture);
+        //Time.timeScale = 1; // Tiếp tục game
+    
+
     }
     
     void Update()
     {
-        CheckItemPickture();
+       
+            CheckItemPickture();
+
+   
+           
     }
 }

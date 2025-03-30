@@ -1,33 +1,23 @@
 ﻿using UnityEngine;
 
+
 public class PlayerUpshot : MonoBehaviour
 {
     private Animator animator;
-
+    public CameraFollowHead cameraFollowHead;
+    private CharacterController characterController;
     private void Start()
     {
+        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
 
     public void PlayerUpShot(Transform enemy)
     {
-        if (enemy == null) return;
-
-        // Xác định hướng đến enemy
-        Vector3 directionToEnemy = enemy.position - transform.position;
-        directionToEnemy.y = 0; // Giữ y = 0 để tránh nhân vật nghiêng
-
-        // Gọi Flip để quay về phía enemy
-        Flip(directionToEnemy);
-    }
-
-    private void Flip(Vector3 direction)
-    {
-        // Xoay nhân vật về phía enemy
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        transform.rotation = newRotation;
-
         // Gọi animation
         animator.SetTrigger("HitDown");
+        cameraFollowHead.rotation = false;
+        characterController.height = 1f;
+        characterController.center = new Vector3(0, 0.57f, 0);
     }
 }

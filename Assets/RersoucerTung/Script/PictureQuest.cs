@@ -10,7 +10,7 @@ public class PictureQuest : MonoBehaviour
     public CinemachineCamera cameraPlayer;
     public CinemachineCamera cameraPicture;
     public GameObject picture;
-
+    public LinhHonTruongLang linhHonTruongLang;
 
     // Stick 
 
@@ -33,6 +33,7 @@ public class PictureQuest : MonoBehaviour
         textContent.gameObject.SetActive(false);
         textContentStick.gameObject.SetActive(false);
         textContentDiary.gameObject.SetActive(false);
+        linhHonTruongLang = FindAnyObjectByType<LinhHonTruongLang>();
     }
 
 
@@ -84,6 +85,7 @@ public class PictureQuest : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         textContentStick.gameObject.SetActive(false);
         Destroy(stick);
+        linhHonTruongLang.Item();
     }
 
 
@@ -104,7 +106,9 @@ public class PictureQuest : MonoBehaviour
         textContent.gameObject.SetActive(false);
         Destroy(picture);
         //Time.timeScale = 1; // Tiếp tục game
-    
+        linhHonTruongLang.Item();
+
+
 
     }
 
@@ -121,6 +125,8 @@ public class PictureQuest : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         textContentDiary.gameObject.SetActive(false);
         Destroy(diary);
+        linhHonTruongLang.Item();
+
     }
 
     void Update()

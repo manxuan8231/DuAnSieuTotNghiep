@@ -2251,7 +2251,7 @@ GameObject:
   - component: {fileID: 6477925686138720217}
   - component: {fileID: 3984674081723143811}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6202,7 +6202,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1475713732777428055}
-  - {fileID: 2558972591188943557}
+  - {fileID: 2082277296993079580}
   - {fileID: 1706855872302357266}
   m_Father: {fileID: 4995492640460254549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7209,7 +7209,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04f1ad56058029498289328ce15c812, type: 3}
---- !u!224 &2558972591188943557 stripped
+--- !u!224 &2082277296993079580 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4568602927356523480, guid: d04f1ad56058029498289328ce15c812, type: 3}
   m_PrefabInstance: {fileID: 2558972591188943556}

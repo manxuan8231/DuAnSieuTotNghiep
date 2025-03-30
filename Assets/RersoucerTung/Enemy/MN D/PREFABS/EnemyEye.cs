@@ -13,8 +13,11 @@ public class EnemyEye : MonoBehaviour
     public float detectionAngle = 30f;
 
     private Animator animator;
+
+    public BoxCollider boxCollider;
     private void Start()
     {
+        boxCollider.enabled = false;    
         animator = GetComponent<Animator>();
         // Tìm player bằng tag "Player"
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -32,12 +35,14 @@ public class EnemyEye : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(player.position);
             animator.SetBool("Walk",true);
+            boxCollider.enabled = true;
         }
         else
         {
             // Dừng lại nếu player không nhìn thẳng
             agent.isStopped = true;
             animator.SetBool("Walk",false);
+            boxCollider.enabled = false;
         }
     }
 

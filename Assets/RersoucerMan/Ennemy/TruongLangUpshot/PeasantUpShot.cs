@@ -4,7 +4,7 @@ public class PeasantUpShot : MonoBehaviour
 {
     public Transform enemy; // Gán enemy vào Inspector
     private Animator animator;
-
+    private int countAttack = 1;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -13,18 +13,17 @@ public class PeasantUpShot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetTrigger("Attack");
-            PlayerUpshot playerUpshot = other.GetComponent<PlayerUpshot>(); // Tìm trực tiếp trên Player
-
-            if (playerUpshot != null)
-            {
-                playerUpshot.PlayerUpShot(enemy);
-            }
-            else
-            {
-                Debug.LogWarning("Không tìm thấy PlayerUpshot trên Player!");
-            }
+           
         }
     }
-
+    public void OnMouseEnter()
+    {
+        if (countAttack > 0)
+        {
+            animator.SetTrigger("Attack");
+            PlayerUpshot playerUpshot = FindAnyObjectByType<PlayerUpshot>();
+            playerUpshot.PlayerUpShot(enemy.transform);
+            countAttack -= 1;
+        }
+    }
 }

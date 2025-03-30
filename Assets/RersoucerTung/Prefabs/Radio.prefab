@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613627930671821671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.7261658, y: 1.6459286, z: 0.6123657}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   - "-... . .... .. -. -.. \u0110\xE2y c\xF3 ngh\u0129a l\xE0 ph\xEDa sau"
   - "Ph\xEDa sau c\xF3 g\xEC nh\u1EC9?"
   model: {fileID: 0}
+  scaredSound: {fileID: 8300000, guid: 8fb9d5d4bd355604c9dbcb8ccc9d1c8f, type: 3}
 --- !u!65 &7333761560360344589
 BoxCollider:
   m_ObjectHideFlags: 0

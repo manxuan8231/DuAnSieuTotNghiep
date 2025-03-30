@@ -8,6 +8,7 @@ public class ContentRadioQuest1 : MonoBehaviour
     public RawImage image;
     [SerializeField] private LayerMask radioLayer;
     Radio radio;
+    public GameObject item;
     void Start()
     {
         image.gameObject.SetActive(false);
@@ -28,7 +29,7 @@ public class ContentRadioQuest1 : MonoBehaviour
             {
                 
                 StartCoroutine(pauseGame());
-                
+
 
             }
         }
@@ -45,9 +46,9 @@ public class ContentRadioQuest1 : MonoBehaviour
       
         image.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(5f);
-        image.gameObject.SetActive(false);
-       
+        image.gameObject.SetActive(false);     
         Time.timeScale = 1; // Tiếp tục game
+        Destroy(item);
         radio.OnBox();
     }
 

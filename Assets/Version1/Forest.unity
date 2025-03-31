@@ -117845,6 +117845,7 @@ MonoBehaviour:
   playerHead: {fileID: 942360194}
   orientation: {fileID: 1239356366}
   smoothSpeed: 70
+  rotation: 1
 --- !u!114 &965883360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133592,7 +133593,6 @@ GameObject:
   - component: {fileID: 1106321948}
   - component: {fileID: 1106321947}
   - component: {fileID: 1106321946}
-  - component: {fileID: 1106321945}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -133600,27 +133600,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1106321945
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106321944}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1106321946
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -133683,7 +133662,7 @@ Transform:
   m_GameObject: {fileID: 1106321944}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9994558, z: -0, w: 0.032988314}
-  m_LocalPosition: {x: 574.37, y: 35, z: 452.31}
+  m_LocalPosition: {x: 558.82, y: 17.5, z: 467.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221241,7 +221220,7 @@ Light:
   m_InnerSpotAngle: 46.715996
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

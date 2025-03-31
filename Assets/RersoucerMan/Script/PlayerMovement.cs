@@ -13,9 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundDistance = 0.4f; // Khoảng cách từ nhân vật đến đất
     [SerializeField] private LayerMask groundMask; // Layer đất
     
-    private float yVelocity; // tốc độ rơi
     private Vector3 velocity; // Vận tốc của nhân vật   
-    private Animator animator; 
+    public Animator animator; 
     public CharacterController controller; // Đối tượng CharacterController
 
     [Header("Ke thua")]
@@ -38,50 +37,52 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z; // Hướng di chuyển
-        float currentSpeed = moveSpeed; // Tốc độ di chuyển bình thường
-
-        // Kiểm tra nếu nhấn Shift thì tăng tốc độ chạy
-        if (Input.GetKey(KeyCode.LeftShift) && sliderUI.CurrentMana() > 0)
-        {
-
-            sliderUI.runMana = true; // Trừ mana khi chạy
-
-            currentSpeed = sprintSpeed; // Tốc độ chạy nhanh
-            animator.SetBool("isRunning", true);
             
-        }
-        else
-        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-            sliderUI.runMana = false;// Không trừ mana khi không chạy
+            Vector3 move = transform.right * x + transform.forward * z; // Hướng di chuyển
+            float currentSpeed = moveSpeed; // Tốc độ di chuyển bình thường
 
-            animator.SetBool("isRunning", false);
-           
-        }
+            // Kiểm tra nếu nhấn Shift thì tăng tốc độ chạy
+            if (Input.GetKey(KeyCode.LeftShift) && sliderUI.CurrentMana() > 0)
+            {
 
-        // Di chuyển nhân vật
-        controller.Move(move * currentSpeed * Time.deltaTime);
+                sliderUI.runMana = true; // Trừ mana khi chạy
 
-        // Animation đi bộ
-        if (move.magnitude >= 0.1f)
-        {
-            sliderUI.walkMana = true; // Trừ mana khi đi bộ
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            sliderUI.walkMana = false; // Không trừ mana khi không đi bộ
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-        }
+                currentSpeed = sprintSpeed; // Tốc độ chạy nhanh
+                animator.SetBool("isRunning", true);
 
-        // Trọng lực
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+            }
+            else
+            {
+
+                sliderUI.runMana = false;// Không trừ mana khi không chạy
+
+                animator.SetBool("isRunning", false);
+
+            }
+
+            // Di chuyển nhân vật
+            controller.Move(move * currentSpeed * Time.deltaTime);
+
+            // Animation đi bộ
+            if (move.magnitude >= 0.1f)
+            {
+                sliderUI.walkMana = true; // Trừ mana khi đi bộ
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                sliderUI.walkMana = false; // Không trừ mana khi không đi bộ
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isRunning", false);
+            }
+
+            // Trọng lực
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        
     }
 
     private void Jump()

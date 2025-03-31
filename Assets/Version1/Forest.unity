@@ -117845,6 +117845,7 @@ MonoBehaviour:
   playerHead: {fileID: 942360194}
   orientation: {fileID: 1239356366}
   smoothSpeed: 70
+  rotation: 1
 --- !u!114 &965883360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133683,7 +133684,7 @@ Transform:
   m_GameObject: {fileID: 1106321944}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9994558, z: -0, w: 0.032988314}
-  m_LocalPosition: {x: 574.37, y: 35, z: 452.31}
+  m_LocalPosition: {x: 574.37, y: 17.5, z: 452.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221241,7 +221242,7 @@ Light:
   m_InnerSpotAngle: 46.715996
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

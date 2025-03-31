@@ -8,6 +8,8 @@ public class LinhHonTruongLang : MonoBehaviour
     public GameObject door;
     public int ItemCollect = 0;
     public bool playerInZone = false;
+
+    public BoxCollider boxCollider;
     void Start()
     {
        agent = GetComponent<NavMeshAgent>();
@@ -25,6 +27,7 @@ public class LinhHonTruongLang : MonoBehaviour
         }
         if(ItemCollect >= 3 && playerInZone)
         {
+            boxCollider.enabled = true;
             door.SetActive(true);
             agent.SetDestination(finalPoint.position);
         }
@@ -48,5 +51,6 @@ public class LinhHonTruongLang : MonoBehaviour
     public void Item()
     {
         ItemCollect++;
+        Debug.Log(ItemCollect);
     }
 }

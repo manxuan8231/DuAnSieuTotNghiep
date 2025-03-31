@@ -22,7 +22,7 @@ public class CameraFollowHead : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (rotation)
+        if (rotation == true)
         {
             float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;

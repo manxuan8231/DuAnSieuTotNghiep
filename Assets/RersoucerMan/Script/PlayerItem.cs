@@ -6,7 +6,7 @@ public class PlayerItem : MonoBehaviour
 {
     // Den pin
     public GameObject flashLight;
-    private int flashLightCount = 0;
+    public int flashLightCount = 0;
 
     // Key1 va Key2
     public GameObject key1;

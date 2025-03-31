@@ -15471,7 +15471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &171409660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79493,6 +79493,7 @@ MonoBehaviour:
   radioLayer:
     serializedVersion: 2
     m_Bits: 1024
+  item: {fileID: 0}
 --- !u!65 &957434023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154019,7 +154020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraFollowHead: {fileID: 956976839}
   panel: {fileID: 171409659}
-  scene: 4
+  scene: 5
 --- !u!1001 &1924754843
 PrefabInstance:
   m_ObjectHideFlags: 0

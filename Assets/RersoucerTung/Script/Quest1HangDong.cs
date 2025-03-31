@@ -64,7 +64,7 @@ public class Quest1HangDong : MonoBehaviour
         }
 
     }
-
+    //hàm nhận vật phẩm vào inventory
     void TrueChoose()
     {
         if (isChooseRight)

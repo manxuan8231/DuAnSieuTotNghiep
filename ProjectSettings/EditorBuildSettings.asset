@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Version1/Even2.unity
     guid: 3aa15eb62f7dc864280f07c82cbd0eed
   - enabled: 1
+    path: Assets/Version1/Forest.unity
+    guid: 85df8fa0bf4504e43abf238cbb262b93
+  - enabled: 0
     path: Assets/RersoucerMan/Test.unity
     guid: 9aebce5f9372a994c93e4caf0a1cac08
   m_configObjects:

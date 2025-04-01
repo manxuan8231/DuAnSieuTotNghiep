@@ -23,8 +23,7 @@ public class LinhHonMovement : MonoBehaviour
     public bool isWalk;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-     
+        agent = GetComponent<NavMeshAgent>();    
     }
 
     void Update()

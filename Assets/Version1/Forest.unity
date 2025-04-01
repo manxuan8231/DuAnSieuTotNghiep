@@ -27573,7 +27573,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5789297378104095052}
   - {fileID: 640825672}
   - {fileID: 1609767891}
   m_Father: {fileID: 0}
@@ -266886,7 +266885,7 @@ Transform:
   m_GameObject: {fileID: 5791136911548076820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0584717, y: -15.5651245, z: -2.8648987}
+  m_LocalPosition: {x: 556.66, y: 18.16, z: 448.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -266895,7 +266894,7 @@ Transform:
   - {fileID: 699203720}
   - {fileID: 1744004866}
   - {fileID: 1691183133}
-  m_Father: {fileID: 233522392}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &5791136911548076820
 GameObject:
@@ -266912,6 +266911,7 @@ GameObject:
   - component: {fileID: 5973879922628869663}
   - component: {fileID: 5973879922628869667}
   - component: {fileID: 5973879922628869666}
+  - component: {fileID: 5973879922628869668}
   m_Layer: 0
   m_Name: LinhHon
   m_TagString: Untagged
@@ -271856,6 +271856,33 @@ MonoBehaviour:
   playerInAttackRange: 0
   hearingPlayerSound: 0
   isWalk: 0
+--- !u!54 &5973879922628869668
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791136911548076820}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6175527153728378422
 GameObject:
   m_ObjectHideFlags: 0
@@ -272528,6 +272555,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1916971831}
   - {fileID: 523624492}
+  - {fileID: 5789297378104095052}
   - {fileID: 233522392}
   - {fileID: 1369487800}
   - {fileID: 1106321948}

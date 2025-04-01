@@ -153900,6 +153900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashLight: {fileID: 1863308186}
+  flashLightCount: 0
   key1: {fileID: 298485806}
   key2: {fileID: 3737569406105355945, guid: 8aafb662ffe6f9e41824b9e2701d2949, type: 3}
   rigBuilder: {fileID: 1924475240}
@@ -153958,6 +153959,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 0}
   controller: {fileID: 1924475247}
 --- !u!143 &1924475247
 CharacterController:
@@ -175556,7 +175558,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.00021783698, y: -0.0020935233, z: 0.008531046, w: -0.9999614}
   m_LocalPosition: {x: 545.49, y: 24.5, z: 443.34}
-  m_LocalScale: {x: 1.3903335, y: 1.3903335, z: 1.3903335}
+  m_LocalScale: {x: 1.6458768, y: 1.6458768, z: 1.6458768}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5507628318864410813}

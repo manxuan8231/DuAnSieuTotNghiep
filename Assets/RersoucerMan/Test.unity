@@ -200,6 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff985a79153a94d4c9b38ab373fdfec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFollowHead: {fileID: 0}
+  panel: {fileID: 0}
+  scene: 0
 --- !u!1 &664260031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7972193671203219800}
+  audioClip: {fileID: 0}
 --- !u!65 &8082839598978429629
 BoxCollider:
   m_ObjectHideFlags: 0

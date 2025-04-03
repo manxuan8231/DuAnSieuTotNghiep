@@ -20,11 +20,10 @@ public class LinhHonMovement : MonoBehaviour
     //State
     public float sightRange, attackRange, hearRange;
     public bool playerInSightRange, playerInAttackRange, hearingPlayerSound;
-    public bool isWalk;
+    public bool isWalk = true;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-     
+        agent = GetComponent<NavMeshAgent>();    
     }
 
     void Update()
@@ -34,7 +33,6 @@ public class LinhHonMovement : MonoBehaviour
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             if (!playerInSightRange && !playerInAttackRange) Patrol();
-
         }
 
     }
@@ -92,7 +90,7 @@ public class LinhHonMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             isWalk = false;
         }

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/RersoucerPhong/Cave/ToolBox.prefab.meta
-guid: f18fec570c745f14bad96ece89d04ffd
-PrefabImporter:
-========
+<<<<<<<< HEAD:Assets/RersoucerTung/Image/Material.001.mat.meta
 guid: 4cf192312a5e49c47a16edfc037d367f
 NativeFormatImporter:
->>>>>>>> MinhTung:Assets/RersoucerTung/Image/Material.001.mat.meta
+========
+guid: 10f8b61d5a392464885c2078856f43f3
+PrefabImporter:
+>>>>>>>> Main2:Assets/RersoucerPhong/Cave/ToolBox.prefab.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

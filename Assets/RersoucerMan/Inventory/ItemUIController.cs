@@ -23,7 +23,10 @@ public class ItemUIController : MonoBehaviour
                 
                 break;
             case ItemType.key:
-                FindAnyObjectByType<PlayerItem>().IncreaseFlashLightCount(item.value);              
+                FindAnyObjectByType<PlayerItem>().IncreaseKey1Count(item.value);              
+                break;
+            case ItemType.glass:
+                FindAnyObjectByType<PlayerItem>().IncreaseGlassCount(item.value);
                 break;
         }
     }

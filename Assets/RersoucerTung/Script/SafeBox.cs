@@ -3,7 +3,7 @@ using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class PasswordSafeBox : MonoBehaviour
+public class SafeBox : MonoBehaviour
 {
     public Animator animator;
     public GameObject canvasPasswordSafeBox;

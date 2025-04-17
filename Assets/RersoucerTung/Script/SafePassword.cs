@@ -9,10 +9,10 @@ public class SafePassword : MonoBehaviour
     public string correctCode = "154"; // Mã đúng
     public Animator animator;
     public bool isPasswordCorrect = false;
-    PasswordSafeBox passwordSafeBox;
+    SafeBox passwordSafeBox;
     void Start()
     {
-        passwordSafeBox = FindAnyObjectByType<PasswordSafeBox>();   
+        passwordSafeBox = FindAnyObjectByType<SafeBox>();   
     }
 
     // Update is called once per frame

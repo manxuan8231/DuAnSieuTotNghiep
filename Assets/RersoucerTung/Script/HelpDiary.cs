@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SafeBoxManager : MonoBehaviour
+public class HelpDiary : MonoBehaviour
 {
     [SerializeField] private LayerMask layerSafebox;
     public RawImage imageSafebox;   

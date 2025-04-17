@@ -34,7 +34,11 @@ public class PaperInFo : MonoBehaviour
                 Destroy(hit.collider.gameObject);
             }
         }
-       
+        else
+        {
+            pickUpPaper.gameObject.SetActive(false);
+        }
+
     }
     IEnumerator pauseGame()
     {

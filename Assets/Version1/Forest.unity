@@ -62538,7 +62538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736825766209531623, guid: 9acb9f2d4eb4b214bb8c41dac735386e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 627.48553
+      value: 627.6
       objectReference: {fileID: 0}
     - target: {fileID: 6736825766209531623, guid: 9acb9f2d4eb4b214bb8c41dac735386e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -159793,7 +159793,8 @@ MonoBehaviour:
   flashLightCount: 1
   key1: {fileID: 2029151215}
   key2: {fileID: 3737569406105355945, guid: 8aafb662ffe6f9e41824b9e2701d2949, type: 3}
-  rigBuilder: {fileID: 1239356368}
+  glassPrefab: {fileID: 0}
+  CountGlass: 0
 --- !u!114 &1239356372
 MonoBehaviour:
   m_ObjectHideFlags: 0

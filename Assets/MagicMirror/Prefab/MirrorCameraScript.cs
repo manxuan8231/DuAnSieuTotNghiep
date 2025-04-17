@@ -186,8 +186,6 @@ public class MirrorCameraScript : MonoBehaviour
                	cameraObject.transform.position = oldpos;
                	cameraObject.farClipPlane = oldclip;
                 GL.invertCulling = false;
-
-
             }
         }
         finally

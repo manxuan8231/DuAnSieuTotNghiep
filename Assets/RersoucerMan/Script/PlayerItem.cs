@@ -15,9 +15,10 @@ public class PlayerItem : MonoBehaviour
     public GameObject key2;
     private int keyCount2 = 0;
 
-    // RigBuilder
-    public RigBuilder rigBuilder;
-
+    //kinh lup
+    public GameObject glassPrefab;
+    public int CountGlass = 0;
+    private GameObject currentGlass;
     void Start()
     {
         // Tat cac item luc dau
@@ -48,14 +49,34 @@ public class PlayerItem : MonoBehaviour
         {
             ToggleItem(key2);
         }
-       
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (currentGlass == null && CountGlass > 0)
+            {
+                // Tắt item khác
+                flashLight.SetActive(false);
+                key1.SetActive(false);
+                key2.SetActive(false);
+                // Tạo kính lúp
+                currentGlass = Instantiate(glassPrefab, transform.position, Quaternion.identity);
+                CountGlass--;
+            }
+            else if (currentGlass != null)
+            {
+                // Xóa kính lúp và hoàn lại
+                Destroy(currentGlass);
+                currentGlass = null;
+                CountGlass++;
+            }
+        }
     }
     // Ham chuyen doi trang thai item va RigBuilder
     private void ToggleItem(GameObject item)
     {
         bool isActive = !item.activeSelf;
         item.SetActive(isActive);
-        rigBuilder.enabled = isActive;
+        
 
         // Tat cac item khac de dam bao chi 1 item duoc kich hoat
         if (item != flashLight) flashLight.SetActive(false);
@@ -77,7 +98,11 @@ public class PlayerItem : MonoBehaviour
     {
         keyCount2 = Mathf.Max(0, keyCount2 + amount);
     }
-
+    //tang so luong kinh lup
+    public void IncreaseGlassCount(int amount)
+    {
+        CountGlass = Mathf.Max(0, CountGlass + amount);
+    }
     public int KeyCount1()
     {
         return keyCount1;

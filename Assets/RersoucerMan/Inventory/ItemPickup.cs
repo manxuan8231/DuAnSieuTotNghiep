@@ -22,6 +22,10 @@ public class ItemPickUp : MonoBehaviour
                 FindAnyObjectByType<PlayerItem>().IncreaseKey1Count(item.value);
                 //cộng key
                 break;
+            case ItemType.glass:
+                FindAnyObjectByType<PlayerItem>().IncreaseGlassCount(item.value);
+                //cộng kinh lup
+                break;
         }      
         InventoryManager.instance.DisplayInventory();// Hiển thị item
     }

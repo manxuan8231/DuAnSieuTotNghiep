@@ -8,10 +8,14 @@ public class Guong : MonoBehaviour
 
     public CommenEvenGuong suKienGuong;
 
+    public TextMeshProUGUI textActiveE;
+
+   
     void Start()
     {
         suKienGuong = FindAnyObjectByType<CommenEvenGuong>();
-       
+      
+        textActiveE.text = $"Bấm E để kích hoạt";
     }
 
    
@@ -20,15 +24,16 @@ public class Guong : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isActive)
         {          
             suKienGuong.KiemTraGuong(this);
+          
         }
     }
    
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && suKienGuong.isClick)
         {
             isActive = true;
-           
+            textActiveE.enabled = true;
         }
     }
     public void OnTriggerExit(Collider other)
@@ -36,7 +41,7 @@ public class Guong : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             isActive = false;
-           
+            textActiveE.enabled = false;
         }
     }
 }

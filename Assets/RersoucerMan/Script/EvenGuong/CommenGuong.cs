@@ -27,6 +27,7 @@ public class CommenEvenGuong : MonoBehaviour
     //text 
     public TextMeshProUGUI textCanhBao;
 
+    
     void Start()
     {
         textHoiThoaiChamGuong.enabled = false;
@@ -48,6 +49,7 @@ public class CommenEvenGuong : MonoBehaviour
         guongDaBam.Add(guong);
 
         Debug.Log("Đã bấm gương ID: " + id);
+
         audioSource.PlayOneShot(audioClipClickE);
         if (hienTai.Count == dungThuTu.Count)
         {

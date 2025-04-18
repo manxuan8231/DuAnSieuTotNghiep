@@ -5,7 +5,7 @@ public class SliderUI : MonoBehaviour
 {
     public Slider sliderMana;
     private float currentMana = 0;
-    private float maxMana = 100f;
+    public float maxMana = 100f;
     private float regenTime = 0;
 
     public bool runMana = false;

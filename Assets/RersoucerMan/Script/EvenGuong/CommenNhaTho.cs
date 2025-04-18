@@ -40,12 +40,13 @@ public class CommenNhaTho : MonoBehaviour
         yield return new WaitForSeconds(time);
         textHoiThoaiLucVao.text = " Thật kì lạ?";
         yield return new WaitForSeconds(time);
+        nhaThoCamera.Priority = 0;
         textHoiThoaiLucVao.text = " Trong nó thật rùng rợn.";
         yield return new WaitForSeconds(time);
         textNhiemVuTimHieuXungQuanh.enabled = true;
         textNhiemVuTimHieuXungQuanh.text = "Nhiệm vụ: Tìm hiểu bên trong nhà thờ.";
         yield return new WaitForSeconds(time);
         text.SetActive(false);
-        nhaThoCamera.Priority = 0;
+        
     }
 }

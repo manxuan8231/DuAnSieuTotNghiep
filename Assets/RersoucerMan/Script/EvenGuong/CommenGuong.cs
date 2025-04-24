@@ -9,9 +9,9 @@ public class CommenEvenGuong : MonoBehaviour
     //text hoi thoai
     public TextMeshProUGUI textHoiThoaiChamGuong;
     public TextMeshProUGUI textNhiemVuTimManhGiay;
-    public bool isActicve = false;
-    public bool isClick = false;
-
+    public bool isActicve = false; // 
+    public bool isClick = false; //click e
+  
     //Nhiem vu
     public List<int> dungThuTu = new List<int>() { 1, 2, 3 };
     private List<int> hienTai = new List<int>();
@@ -26,13 +26,19 @@ public class CommenEvenGuong : MonoBehaviour
 
     //text 
     public TextMeshProUGUI textCanhBao;
-
-    
+    //vat pham nhan dc sau khi giai ma
+    public GameObject vatPhamDaNhan;
+    //goi ham
+    private Guong guong;
     void Start()
     {
-        textHoiThoaiChamGuong.enabled = false;
-        textNhiemVuTimManhGiay.enabled = false;
+        textHoiThoaiChamGuong.enabled = false;//text hoi thoai cham guong
+        textNhiemVuTimManhGiay.enabled = false;//nhiem vu
+        vatPhamDaNhan.SetActive(true);//vat pham da nhan
+        //
         audioSource = GetComponent<AudioSource>();
+        guong = FindAnyObjectByType<Guong>();
+
     }
     
     void Update()
@@ -43,11 +49,11 @@ public class CommenEvenGuong : MonoBehaviour
     public void KiemTraGuong(Guong guong)
     {
         int id = guong.id;
-        if (hienTai.Contains(id)) return; // tránh bấm trùng
-        
+        if (hienTai.Contains(id)) return; //tránh bấm lại gương đã bấm rồi
+
         hienTai.Add(id);
         guongDaBam.Add(guong);
-
+        guong.textActiveE.enabled = false;//text e tat
         Debug.Log("Đã bấm gương ID: " + id);
 
         audioSource.PlayOneShot(audioClipClickE);
@@ -68,8 +74,8 @@ public class CommenEvenGuong : MonoBehaviour
             {
                 Debug.Log(" Đã giải mã đúng hết gương!");
                 StartCoroutine(TextColdownDung(3));
-                audioSource.PlayOneShot(audioClipRight);
-                isClick = false;//đẻ ko bấm E đc nữa
+               
+                
             }
             else
             {
@@ -118,10 +124,13 @@ public class CommenEvenGuong : MonoBehaviour
 
     public IEnumerator TextColdownDung(float amout)
     {
+        audioSource.PlayOneShot(audioClipRight);
+        isClick = false;//đẻ ko bấm E đc nữa
         textCanhBao.enabled = true;
         textCanhBao.color = Color.green;
         textCanhBao.text = $"Đã giải mã đúng hết gương";
         yield return new WaitForSeconds(amout);
+        vatPhamDaNhan.SetActive(false);
         textCanhBao.enabled = false;
        
     }
@@ -134,4 +143,6 @@ public class CommenEvenGuong : MonoBehaviour
         textCanhBao.enabled = false;
 
     }
+
+   
 }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Guong : MonoBehaviour
@@ -10,7 +11,7 @@ public class Guong : MonoBehaviour
 
     public TextMeshProUGUI textActiveE;
 
-   
+    public GameObject[] light;
     void Start()
     {
         suKienGuong = FindAnyObjectByType<CommenEvenGuong>();
@@ -24,7 +25,7 @@ public class Guong : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isActive)
         {          
             suKienGuong.KiemTraGuong(this);
-          
+            StartCoroutine(ColdownLight());
         }
     }
    
@@ -42,6 +43,18 @@ public class Guong : MonoBehaviour
         {
             isActive = false;
             textActiveE.enabled = false;
+        }
+    }
+    IEnumerator ColdownLight()
+    {
+        foreach (var item in light)
+        {
+            item.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.5f);
+        foreach (var item in light)
+        {
+            item.SetActive(true);
         }
     }
 }

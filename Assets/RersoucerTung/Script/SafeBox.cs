@@ -32,9 +32,11 @@ public class SafeBox : MonoBehaviour
                 canvasPasswordSafeBox.SetActive(true);
                 Cursor.lockState = CursorLockMode.None; // Hiện con trỏ chuột
                 Cursor.visible = true; // Hiện con trỏ chuột
+                Time.timeScale = 0;
             }
             if (safePassword.isPasswordCorrect)
             {
+              
                 canvasPasswordSafeBox.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked; // Ẩn con trỏ chuột
                 Cursor.visible = false; // Ẩn con trỏ chuột

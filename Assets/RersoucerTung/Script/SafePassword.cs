@@ -31,7 +31,7 @@ public class SafePassword : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked; // Ẩn con trỏ chuột
             Cursor.visible = false;
             passwordSafeBox.canvasPasswordSafeBox.SetActive(false);
-
+            Time.timeScale = 1;
         }
         else
         {

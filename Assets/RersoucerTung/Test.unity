@@ -85985,8 +85985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c4ea442745f084cb06500793080569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 70
-  sensY: 70
+  sensX: 200
+  sensY: 200
   playerHead: {fileID: 1068085444}
   orientation: {fileID: 1886304855}
   smoothSpeed: 70
@@ -102164,6 +102164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderMana: {fileID: 1822691425}
+  maxMana: 100
   runMana: 0
   walkMana: 0
   canvasSliderMana: {fileID: 1822691423}

@@ -21,18 +21,12 @@ public class PictureQuest : MonoBehaviour
     public GameObject stick;
 
 
-    //Diary
-
-    public LayerMask DiaryMask;
-    public TextMeshProUGUI textContentDiary;
-    public CinemachineCamera cameraPlayerDiary;
-    public CinemachineCamera cameraDiary;
-    public GameObject diary;
+  
     void Start()
     {
         textContent.gameObject.SetActive(false);
         textContentStick.gameObject.SetActive(false);
-        textContentDiary.gameObject.SetActive(false);
+       
         linhHonTruongLang = FindAnyObjectByType<LinhHonTruongLang>();
     }
 
@@ -61,17 +55,8 @@ public class PictureQuest : MonoBehaviour
                 StartCoroutine(ChangeCameraStick());
             }
         }
-        if(Physics.Raycast(transform.position, transform.forward, out var hit3, 5, DiaryMask))
-        {
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(ChangeCameraDiary());
-            }
-        }
+       
     }
-
-
     //routie Stick
   IEnumerator ChangeCameraStick()
     {
@@ -87,8 +72,6 @@ public class PictureQuest : MonoBehaviour
         Destroy(stick);
         linhHonTruongLang.Item();
     }
-
-
     //routie Picture
     IEnumerator ChangeCameraPicture()
     {
@@ -111,26 +94,9 @@ public class PictureQuest : MonoBehaviour
 
 
     }
-
-    //routine Diary
-    IEnumerator ChangeCameraDiary()
-    {
-        cameraDiary.Priority = 20;
-        cameraPlayerDiary.Priority = 0;
-        yield return new WaitForSecondsRealtime(1f);
-        textContentDiary.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(3f);
-        cameraDiary.Priority = 0;
-        cameraPlayerDiary.Priority = 10;
-        yield return new WaitForSecondsRealtime(2f);
-        textContentDiary.gameObject.SetActive(false);
-        Destroy(diary);
-        linhHonTruongLang.Item();
-
-    }
-
     void Update()
     {
         CheckItem();
     }
+   
 }

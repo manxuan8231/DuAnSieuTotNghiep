@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Checkpoint
+  - Glass
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - TrueQuestion1
   - FalseQuestion1
   - HelpQuestion1
-  - DemonDoll
-  - 
+  - HelpDiarySafe
+  - SafeBox
   - 
   - 
   - 

@@ -182,7 +182,7 @@ public class MirrorCameraScript : MonoBehaviour
                	cameraObject.transform.position = newpos;
                	cameraObject.farClipPlane = mirrorScript.FarClipPlane;
 				cameraObject.cullingMask = ~(1 << 4) & mirrorScript.ReflectLayers.value;
-               	cameraObject.Render();
+                //cameraObject.Render();
                	cameraObject.transform.position = oldpos;
                	cameraObject.farClipPlane = oldclip;
                 GL.invertCulling = false;

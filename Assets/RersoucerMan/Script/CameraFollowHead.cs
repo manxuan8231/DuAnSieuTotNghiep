@@ -22,15 +22,14 @@ public class CameraFollowHead : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (rotation == true)
-        {
+       
             float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 
             // Xoay góc nhìn theo chuột
             yRotation += mouseX;
             xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -65f, 65f); // Giới hạn góc nhìn lên/xuống
+            xRotation = Mathf.Clamp(xRotation, -50f, 50); // Giới hạn góc nhìn lên/xuống
 
             // góc quay cho camera và nhân vật
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);// Xoay camera
@@ -38,7 +37,7 @@ public class CameraFollowHead : MonoBehaviour
             {
                 orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);// Xoay hướng nhân vật
             }
-        }
+        
         // camera follow
         transform.position = Vector3.Lerp(transform.position, playerHead.position, smoothSpeed * Time.deltaTime);
     }
